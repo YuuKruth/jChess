@@ -60,7 +60,10 @@ public class Knight extends Piece{
     private final static  int MOVE_RIGHT_DOWN = 10; //f3
     private final static  int MOVE_DOWN_LEFT = 15; //c2
     private final static  int MOVE_DOWN_RIGHT = 17; //e2
-    private final static int[] CANDIDATE_MOVE_COORDINATES = {MOVE_UP_LEFT, MOVE_UP_RIGHT, MOVE_LEFT_UP, MOVE_RIGHT_UP, MOVE_LEFT_DOWN, MOVE_RIGHT_DOWN, MOVE_DOWN_LEFT, MOVE_DOWN_RIGHT};
+    private final static int[] CANDIDATE_MOVE_COORDINATES = {MOVE_UP_LEFT, MOVE_UP_RIGHT,
+                                                            MOVE_LEFT_UP, MOVE_RIGHT_UP,
+                                                            MOVE_LEFT_DOWN, MOVE_RIGHT_DOWN,
+                                                            MOVE_DOWN_LEFT, MOVE_DOWN_RIGHT};
     Knight(final int getPiecePosition, final Alliance pieceAlliance) {
         super(getPiecePosition, pieceAlliance);
     }
@@ -95,18 +98,26 @@ public class Knight extends Piece{
 
     //in case Piece is a difficult spot
     private static boolean isFirstColumnExclusion(final int currentPosition, final int candidateOffset){
-        return BoardUtils.FIRST_COLUMN[currentPosition] && (candidateOffset == MOVE_UP_LEFT || candidateOffset == MOVE_LEFT_UP || candidateOffset == MOVE_LEFT_DOWN || candidateOffset == MOVE_DOWN_LEFT);
+        return BoardUtils.FIRST_COLUMN[currentPosition] && (candidateOffset == MOVE_UP_LEFT ||
+                                                            candidateOffset == MOVE_LEFT_UP ||
+                                                            candidateOffset == MOVE_LEFT_DOWN ||
+                                                            candidateOffset == MOVE_DOWN_LEFT);
     } //-17, -10, 6, 15
 
     private static boolean isSecondColumnExclusion(final int currentPosition, final int candidateOffset){
-        return BoardUtils.SECOND_COLUMN[currentPosition] && (candidateOffset == MOVE_LEFT_UP || candidateOffset == MOVE_LEFT_DOWN);
+        return BoardUtils.SECOND_COLUMN[currentPosition] && (candidateOffset == MOVE_LEFT_UP ||
+                                                             candidateOffset == MOVE_LEFT_DOWN);
     } //-10, 6
 
     private static boolean isSeventhColumnExclusion(final int currentPosition, final int candidateOffset){
-        return BoardUtils.SEVENTH_COLUMN[currentPosition] && (candidateOffset == MOVE_RIGHT_UP || candidateOffset == MOVE_RIGHT_DOWN);
+        return BoardUtils.SEVENTH_COLUMN[currentPosition] && (candidateOffset == MOVE_RIGHT_UP ||
+                                                              candidateOffset == MOVE_RIGHT_DOWN);
     } //-6, 10
 
     private static boolean isEighthColumnExclusion(final int currentPosition, final int candidateOffset){
-        return BoardUtils.EIGHTH_COLUMN[currentPosition] && (candidateOffset == MOVE_UP_RIGHT || candidateOffset == MOVE_RIGHT_UP || candidateOffset == MOVE_RIGHT_DOWN || candidateOffset == MOVE_DOWN_RIGHT);
+        return BoardUtils.EIGHTH_COLUMN[currentPosition] && (candidateOffset == MOVE_UP_RIGHT ||
+                                                             candidateOffset == MOVE_RIGHT_UP ||
+                                                             candidateOffset == MOVE_RIGHT_DOWN ||
+                                                             candidateOffset == MOVE_DOWN_RIGHT);
     } // -15, -6, 10, 17
 }
