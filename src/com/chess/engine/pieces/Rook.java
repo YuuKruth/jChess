@@ -30,24 +30,24 @@ public class Rook extends Piece{
     // "R" represents the piece Rook
     // "*" represents it's possible moves
 
-    //VECTOR_DIAGONALLY_RIGHT_UP
+    //VECTOR_VERTICALLY_UP
     //    a   b   c   d   e   f   g   h
     // 8|   |   |   | * |   |   |   |   |
     // 7|   |   |   | * |   |   |   |   |
-    // 6|   |   |   | * |   |   |   |   |
-    // 5|   |   |   | * |   |   |   |   |
+    // 6|   |   |   | r |   |   |   |   |
+    // 5|   |   |   | | |   |   |   |   |
     // 4| * | * | * | R | * | * | * | * |
     // 3|   |   |   | * |   |   |   |   |
     // 2|   |   |   | * |   |   |   |   |
     // 1|   |   |   | * |   |   |   |   |
 
-    //VECTOR_DIAGONALLY_LEFT_DOWN
+    //VECTOR_HORIZONTALLY_RIGHT
     //    a   b   c   d   e   f   g   h
     // 8|   |   |   | * |   |   |   |   |
     // 7|   |   |   | * |   |   |   |   |
     // 6|   |   |   | * |   |   |   |   |
     // 5|   |   |   | * |   |   |   |   |
-    // 4| * | * | * | R | * | * | * | * |
+    // 4| * | * | * | R |---|---|>r | * |
     // 3|   |   |   | * |   |   |   |   |
     // 2|   |   |   | * |   |   |   |   |
     // 1|   |   |   | * |   |   |   |   |
