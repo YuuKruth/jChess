@@ -64,7 +64,8 @@ public class Knight extends Piece{
                                                             MOVE_LEFT_UP, MOVE_RIGHT_UP,
                                                             MOVE_LEFT_DOWN, MOVE_RIGHT_DOWN,
                                                             MOVE_DOWN_LEFT, MOVE_DOWN_RIGHT};
-    Knight(final int getPiecePosition, final Alliance pieceAlliance) {
+    public Knight(final Alliance pieceAlliance,
+                  final int getPiecePosition) {
         super(getPiecePosition, pieceAlliance);
     }
 

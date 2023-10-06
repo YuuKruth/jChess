@@ -57,7 +57,8 @@ public class Rook extends Piece{
     private static final int VECTOR_HORIZONTALLY_RIGHT = 1; //e4 to h4
     private static final int VECTOR_VERTICALLY_DOWN = 8; //d3 to d1
     private final static int[] CANDIDATE_MOVE_VECTOR_COORDINATES = {VECTOR_VERTICALLY_UP, VECTOR_HORIZONTALLY_LEFT, VECTOR_HORIZONTALLY_RIGHT, VECTOR_VERTICALLY_DOWN};
-    Rook(int getPiecePosition, Alliance pieceAlliance) {
+    public Rook(final Alliance pieceAlliance,
+                final int getPiecePosition) {
         super(getPiecePosition, pieceAlliance);
     }
 

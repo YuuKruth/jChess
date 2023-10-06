@@ -58,7 +58,8 @@ public class Pawn extends Piece {
     private final static int[] CANDIDATE_MOVE_COORDINATE = {MOVE_UP, MOVE_JUMP,
                                                             ATTACK_MOVE_ONE_SIDE, ATTACK_MOVE_ANOTHER_SIDE};
 
-    Pawn(int getPiecePosition, Alliance pieceAlliance) {
+    public Pawn(final Alliance pieceAlliance,
+                final int getPiecePosition) {
         super(getPiecePosition, pieceAlliance);
     }
 
