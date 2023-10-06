@@ -26,7 +26,7 @@ public class Pawn extends Piece {
     // 2|   |   |   |   |   | P |   |   |
     // 1|   |   |   |   |   |   |   |   |
     //
-    // "K" represents the piece Knight
+    // "P" represents the piece Pawn
     // "*" represents it's possible moves
 
     //MOVE_UP
@@ -51,9 +51,12 @@ public class Pawn extends Piece {
     // 2|   |   |   |   |   | P |   |   |
     // 1|   |   |   |   |   |   |   |   |
 
-    private final static int MOVE_UP = 8;
-    private final static int MOVE_JUMP = 16;
-    private final static int[] CANDIDATE_MOVE_COORDINATE = {MOVE_UP, MOVE_JUMP, 7, 9};
+    private final static int MOVE_UP = 8; //d5
+    private final static int MOVE_JUMP = 16; //f4
+    private final static int ATTACK_MOVE_ONE_SIDE = 7; //c5 or e5
+    private final static int ATTACK_MOVE_ANOTHER_SIDE = 9; //e5 or c5
+    private final static int[] CANDIDATE_MOVE_COORDINATE = {MOVE_UP, MOVE_JUMP,
+                                                            ATTACK_MOVE_ONE_SIDE, ATTACK_MOVE_ANOTHER_SIDE};
 
     Pawn(int getPiecePosition, Alliance pieceAlliance) {
         super(getPiecePosition, pieceAlliance);
@@ -81,8 +84,8 @@ public class Pawn extends Piece {
                         !board.getTile(candidateDestinationCoordinate).isTileOccupied()) {
                     legalMoves.add(new MajorMove(board, this, candidateDestinationCoordinate));
                 }
-            }//Attack Move
-            else if (currentCandidateOffset == 7 &&
+            }//Attack Move one side
+            else if (currentCandidateOffset == ATTACK_MOVE_ONE_SIDE &&
                     !((BoardUtils.EIGHTH_COLUMN[this.piecePosition] && this.pieceAlliance.isWhite() ||
                      (BoardUtils.FIRST_COLUMN[this.piecePosition] && this.pieceAlliance.isBlack()))) ){
                 if (board.getTile(candidateDestinationCoordinate).isTileOccupied()){
@@ -93,8 +96,8 @@ public class Pawn extends Piece {
                     }
                 }
 
-            }//Attack Move
-            else if (currentCandidateOffset == 9 &&
+            }//Attack Move another side
+            else if (currentCandidateOffset == ATTACK_MOVE_ANOTHER_SIDE &&
                     !((BoardUtils.FIRST_COLUMN[this.piecePosition] && this.pieceAlliance.isWhite() ||
                      (BoardUtils.EIGHTH_COLUMN[this.piecePosition] && this.pieceAlliance.isBlack()))) ){
                 if (board.getTile(candidateDestinationCoordinate).isTileOccupied()){
