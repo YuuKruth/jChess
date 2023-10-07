@@ -67,7 +67,7 @@ public class Knight extends Piece{
                                                             MOVE_DOWN_LEFT, MOVE_DOWN_RIGHT};
     public Knight(final Alliance pieceAlliance,
                   final int getPiecePosition) {
-        super(getPiecePosition, pieceAlliance);
+        super(PieceType.KNIGHT, getPiecePosition, pieceAlliance);
     }
 
     @Override

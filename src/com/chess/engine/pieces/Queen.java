@@ -68,7 +68,7 @@ public class Queen extends Piece{
                                                                     VECTOR_VERTICALLY_DOWN, VECTOR_DIAGONALLY_RIGHT_DOWN};
     public Queen(final Alliance pieceAlliance,
                  final int getPiecePosition) {
-        super(getPiecePosition, pieceAlliance);
+        super(PieceType.QUEEN, getPiecePosition, pieceAlliance);
     }
 
     @Override

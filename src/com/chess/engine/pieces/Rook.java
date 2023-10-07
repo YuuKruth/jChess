@@ -60,7 +60,7 @@ public class Rook extends Piece{
     private final static int[] CANDIDATE_MOVE_VECTOR_COORDINATES = {VECTOR_VERTICALLY_UP, VECTOR_HORIZONTALLY_LEFT, VECTOR_HORIZONTALLY_RIGHT, VECTOR_VERTICALLY_DOWN};
     public Rook(final Alliance pieceAlliance,
                 final int getPiecePosition) {
-        super(getPiecePosition, pieceAlliance);
+        super(PieceType.ROOK, getPiecePosition, pieceAlliance);
     }
 
     @Override

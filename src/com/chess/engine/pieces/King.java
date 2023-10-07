@@ -42,7 +42,7 @@ public class King extends Piece{
                                                             MOVE_DOWN_LEFT, MOVE_DOWN,MOVE_DOWN_RIGHT};
     public King(final Alliance pieceAlliance,
                 final int getPiecePosition) {
-        super(getPiecePosition, pieceAlliance);
+        super(PieceType.KING ,getPiecePosition, pieceAlliance);
     }
 
     @Override
