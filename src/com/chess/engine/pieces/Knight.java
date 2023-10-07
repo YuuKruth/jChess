@@ -22,44 +22,45 @@ public class Knight extends Piece{
     // 7|   |   |   |   |   |   |   |   |
     // 6|   |   | * |   | * |   |   |   |
     // 5|   | * |   |   |   | * |   |   |
-    // 4|   |   |   | K |   |   |   |   |
+    // 4|   |   |   | N |   |   |   |   |
     // 3|   | * |   |   |   | * |   |   |
     // 2|   |   | * |   | * |   |   |   |
     // 1|   |   |   |   |   |   |   |   |
     //
-    // "K" represents the piece Knight
+    // "N" represents the piece Knight
+    // "n" represents the moved piece Knight
     // "*" represents it's possible moves
 
-    //MOVE_UP_LEFT
+    //MOVE_UP_LEFT Nc6
     //    a   b   c   d   e   f   g   h
     // 8|   |   |   |   |   |   |   |   |
     // 7|   |   |   |   |   |   |   |   |
-    // 6|   |   | k<|-- | * |   |   |   |
+    // 6|   |   | n<|-- | * |   |   |   |
     // 5|   | * |   | | |   | * |   |   |
-    // 4|   |   |   | K |   |   |   |   |
+    // 4|   |   |   | N |   |   |   |   |
     // 3|   | * |   |   |   | * |   |   |
     // 2|   |   | * |   | * |   |   |   |
     // 1|   |   |   |   |   |   |   |   |
 
-    //MOVE_RIGHT_DOWN
+    //MOVE_RIGHT_DOWN Nf3
     //    a   b   c   d   e   f   g   h
     // 8|   |   |   |   |   |   |   |   |
     // 7|   |   |   |   |   |   |   |   |
     // 6|   |   | * |   | * |   |   |   |
     // 5|   | * |   |   |   | * |   |   |
-    // 4|   |   |   | K-|---|-v |   |   |
-    // 3|   | * |   |   |   | k |   |   |
+    // 4|   |   |   | N-|---|-v |   |   |
+    // 3|   | * |   |   |   | n |   |   |
     // 2|   |   | * |   | * |   |   |   |
     // 1|   |   |   |   |   |   |   |   |
 
-    private final static  int MOVE_UP_LEFT = -17; //c6
-    private final static  int MOVE_UP_RIGHT = -15; //e6
-    private final static  int MOVE_LEFT_UP = -10; //b5
-    private final static  int MOVE_RIGHT_UP = -6; //f5
-    private final static  int MOVE_LEFT_DOWN = 6; //b3
-    private final static  int MOVE_RIGHT_DOWN = 10; //f3
-    private final static  int MOVE_DOWN_LEFT = 15; //c2
-    private final static  int MOVE_DOWN_RIGHT = 17; //e2
+    private final static  int MOVE_UP_LEFT = -17; //Nc6
+    private final static  int MOVE_UP_RIGHT = -15; //Ne6
+    private final static  int MOVE_LEFT_UP = -10; //Nb5
+    private final static  int MOVE_RIGHT_UP = -6; //Nf5
+    private final static  int MOVE_LEFT_DOWN = 6; //Nb3
+    private final static  int MOVE_RIGHT_DOWN = 10; //Nf3
+    private final static  int MOVE_DOWN_LEFT = 15; //Nc2
+    private final static  int MOVE_DOWN_RIGHT = 17; //Ne2
     private final static int[] CANDIDATE_MOVE_COORDINATES = {MOVE_UP_LEFT, MOVE_UP_RIGHT,
                                                             MOVE_LEFT_UP, MOVE_RIGHT_UP,
                                                             MOVE_LEFT_DOWN, MOVE_RIGHT_DOWN,
@@ -95,6 +96,10 @@ public class Knight extends Piece{
         }
 
         return ImmutableList.copyOf(legalMoves);
+    }
+    @Override
+    public String toString(){
+        return PieceType.KNIGHT.toString();
     }
 
     //in case Piece is a difficult spot

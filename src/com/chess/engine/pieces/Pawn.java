@@ -27,9 +27,10 @@ public class Pawn extends Piece {
     // 1|   |   |   |   |   |   |   |   |
     //
     // "P" represents the piece Pawn
+    // "p" represents the moved piece Pawn
     // "*" represents it's possible moves
 
-    //MOVE_UP
+    //MOVE_UP d5
     //    a   b   c   d   e   f   g   h
     // 8|   |   |   |   |   |   |   |   |
     // 7|   |   |   |   |   |   |   |   |
@@ -40,7 +41,7 @@ public class Pawn extends Piece {
     // 2|   |   |   |   |   |   |   |   |
     // 1|   |   |   |   |   |   |   |   |
 
-    //MOVE_JUMP
+    //MOVE_JUMP f4
     //    a   b   c   d   e   f   g   h
     // 8|   |   |   |   |   |   |   |   |
     // 7|   |   |   |   |   |   |   |   |
@@ -111,5 +112,9 @@ public class Pawn extends Piece {
             }
         }
         return ImmutableList.copyOf(legalMoves);
+    }
+    @Override
+    public String toString(){
+        return PieceType.PAWN.toString();
     }
 }

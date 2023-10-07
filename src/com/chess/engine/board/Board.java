@@ -12,14 +12,14 @@ import java.util.Map;
 public class Board {
     //Chess board 8*8
     //    a   b   c   d   e   f   g   h
-    // 8| R | K | B | Q | Ki| B | K | R |
+    // 8| R | N | B | Q | K | B | N | R |
     // 7| P | P | P | P | P | P | P | P |
     // 6|   |   |   |   |   |   |   |   |
     // 5|   |   |   |   |   |   |   |   |
     // 4|   |   |   |   |   |   |   |   |
     // 3|   |   |   |   |   |   |   |   |
     // 2| P | P | P | P | P | P | P | P |
-    // 1| R | K | B | Q | Ki| B | K | R |
+    // 1| R | N | B | Q | K | B | N | R |
 
     private final List<Tile> gameBoard;
     private final Collection<Piece> whitePieces;

@@ -20,21 +20,22 @@ public class King extends Piece{
     // 7|   |   |   |   |   |   |   |   |
     // 6|   |   |   |   |   |   |   |   |
     // 5|   |   | * | * | * |   |   |   |
-    // 4|   |   | * | KI| * |   |   |   |
+    // 4|   |   | * | K | * |   |   |   |
     // 3|   |   | * | * | * |   |   |   |
     // 2|   |   |   |   |   |   |   |   |
     // 1|   |   |   |   |   |   |   |   |
     //
-    // "KI" represents the piece King
+    // "K" represents the piece King
+    // "k" represents the moved piece King
     // "*" represents it's possible moves
-    private final static int MOVE_UP_LEFT = -9; //c5
-    private final static int MOVE_UP = -8; //d5
-    private final static int MOVE_UP_RIGHT = -7; //e5
-    private final static int MOVE_LEFT = -1; //c4
-    private final static int MOVE_RIGHT = 1; //e4
-    private final static int MOVE_DOWN_LEFT = 7; //c3
-    private final static int MOVE_DOWN = 8; //d3
-    private final static int MOVE_DOWN_RIGHT = 9; //e3
+    private final static int MOVE_UP_LEFT = -9; //Kc5
+    private final static int MOVE_UP = -8; //Kd5
+    private final static int MOVE_UP_RIGHT = -7; //Ke5
+    private final static int MOVE_LEFT = -1; //Kc4
+    private final static int MOVE_RIGHT = 1; //Ke4
+    private final static int MOVE_DOWN_LEFT = 7; //Kc3
+    private final static int MOVE_DOWN = 8; //Kd3
+    private final static int MOVE_DOWN_RIGHT = 9; //Ke3
 
     private final static int[] CANDIDATE_MOVE_COORDINATE = {MOVE_UP_LEFT, MOVE_UP, MOVE_UP_RIGHT,
                                                                     MOVE_LEFT, MOVE_RIGHT,
@@ -68,6 +69,10 @@ public class King extends Piece{
         }
 
         return ImmutableList.copyOf(legalMoves);
+    }
+    @Override
+    public String toString(){
+        return PieceType.KING.toString();
     }
     private static boolean isFirstColumnExclusion(final int currentPosition, final int candidateOffset){
         return BoardUtils.FIRST_COLUMN[currentPosition] && (candidateOffset == MOVE_UP_LEFT ||

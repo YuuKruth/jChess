@@ -28,9 +28,10 @@ public class Rook extends Piece{
     // 1|   |   |   | * |   |   |   |   |
     //
     // "R" represents the piece Rook
+    // "r" represents the moved piece Rook
     // "*" represents it's possible moves
 
-    //VECTOR_VERTICALLY_UP
+    //VECTOR_VERTICALLY_UP Rd6
     //    a   b   c   d   e   f   g   h
     // 8|   |   |   | * |   |   |   |   |
     // 7|   |   |   | * |   |   |   |   |
@@ -41,7 +42,7 @@ public class Rook extends Piece{
     // 2|   |   |   | * |   |   |   |   |
     // 1|   |   |   | * |   |   |   |   |
 
-    //VECTOR_HORIZONTALLY_RIGHT
+    //VECTOR_HORIZONTALLY_RIGHT Rg4
     //    a   b   c   d   e   f   g   h
     // 8|   |   |   | * |   |   |   |   |
     // 7|   |   |   | * |   |   |   |   |
@@ -52,10 +53,10 @@ public class Rook extends Piece{
     // 2|   |   |   | * |   |   |   |   |
     // 1|   |   |   | * |   |   |   |   |
 
-    private static final int VECTOR_VERTICALLY_UP = -8; //d5 to d8
-    private static final int VECTOR_HORIZONTALLY_LEFT = -1; //c4 to a4
-    private static final int VECTOR_HORIZONTALLY_RIGHT = 1; //e4 to h4
-    private static final int VECTOR_VERTICALLY_DOWN = 8; //d3 to d1
+    private static final int VECTOR_VERTICALLY_UP = -8; //Rd5 to Rd8
+    private static final int VECTOR_HORIZONTALLY_LEFT = -1; //Rc4 to Ra4
+    private static final int VECTOR_HORIZONTALLY_RIGHT = 1; //Re4 to Rh4
+    private static final int VECTOR_VERTICALLY_DOWN = 8; //Rd3 to Rd1
     private final static int[] CANDIDATE_MOVE_VECTOR_COORDINATES = {VECTOR_VERTICALLY_UP, VECTOR_HORIZONTALLY_LEFT, VECTOR_HORIZONTALLY_RIGHT, VECTOR_VERTICALLY_DOWN};
     public Rook(final Alliance pieceAlliance,
                 final int getPiecePosition) {
@@ -91,6 +92,10 @@ public class Rook extends Piece{
         }
 
         return ImmutableList.copyOf(legalMoves);
+    }
+    @Override
+    public String toString(){
+        return PieceType.ROOK.toString();
     }
 
     private static boolean isFirstColumnExclusion(final int currentPosition, final int candidateOffset){

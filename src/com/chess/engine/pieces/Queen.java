@@ -28,9 +28,10 @@ public class Queen extends Piece{
     // 1| * |   |   | * |   |   | * |   |
     //
     // "Q" represents the piece Queen
+    // "q" represents the moved piece Queen
     // "*" represents it's possible moves
 
-    //VECTOR_DIAGONALLY_RIGHT_UP
+    //VECTOR_DIAGONALLY_RIGHT_UP Qg7
     //    a   b   c   d   e   f   g   h
     // 8|   |   |   | * |   |   |   | * |
     // 7| * |   |   | * |   |   |>q |   |
@@ -41,7 +42,7 @@ public class Queen extends Piece{
     // 2|   | * |   | * |   | * |   |   |
     // 1| * |   |   | * |   |   | * |   |
 
-    //VECTOR_HORIZONTALLY_RIGHT
+    //VECTOR_HORIZONTALLY_RIGHT Qg4
     //    a   b   c   d   e   f   g   h
     // 8|   |   |   | * |   |   |   | * |
     // 7| * |   |   | * |   |   | * |   |
@@ -52,14 +53,14 @@ public class Queen extends Piece{
     // 2|   | * |   | * |   | * |   |   |
     // 1| * |   |   | * |   |   | * |   |
 
-    private static final int VECTOR_DIAGONALLY_LEFT_UP = -9; //c5 to a7
-    private static final int VECTOR_VERTICALLY_UP = -8; //d5 to d8
-    private static final int VECTOR_DIAGONALLY_RIGHT_UP = -7; //e5 to h8
-    private static final int VECTOR_HORIZONTALLY_LEFT = -1; //c4 to a4
-    private static final int VECTOR_HORIZONTALLY_RIGHT = 1; //e4 to h4
-    private static final int VECTOR_DIAGONALLY_LEFT_DOWN = 7; //c3 to a1
-    private static final int VECTOR_VERTICALLY_DOWN = 8; //d3 to d1
-    private static final int VECTOR_DIAGONALLY_RIGHT_DOWN = 9; //e3 to g1
+    private static final int VECTOR_DIAGONALLY_LEFT_UP = -9; //Qc5 to Qa7
+    private static final int VECTOR_VERTICALLY_UP = -8; //Qd5 to Qd8
+    private static final int VECTOR_DIAGONALLY_RIGHT_UP = -7; //Qe5 to Qh8
+    private static final int VECTOR_HORIZONTALLY_LEFT = -1; //Qc4 to Qa4
+    private static final int VECTOR_HORIZONTALLY_RIGHT = 1; //Qe4 to Qh4
+    private static final int VECTOR_DIAGONALLY_LEFT_DOWN = 7; //Qc3 to Qa1
+    private static final int VECTOR_VERTICALLY_DOWN = 8; //Qd3 to Qd1
+    private static final int VECTOR_DIAGONALLY_RIGHT_DOWN = 9; //Qe3 to Qg1
 
     private final static int[] CANDIDATE_MOVE_VECTOR_COORDINATES = {VECTOR_DIAGONALLY_LEFT_UP, VECTOR_VERTICALLY_UP,
                                                                     VECTOR_DIAGONALLY_RIGHT_UP, VECTOR_HORIZONTALLY_LEFT,
@@ -98,6 +99,10 @@ public class Queen extends Piece{
             }
         }
         return ImmutableList.copyOf(legalMoves);
+    }
+    @Override
+    public String toString(){
+        return PieceType.QUEEN.toString();
     }
 
     private static boolean isFirstColumnExclusion(final int currentPosition, final int candidateOffset){

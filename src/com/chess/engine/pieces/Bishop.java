@@ -28,9 +28,10 @@ public class Bishop extends Piece{
     // 1| * |   |   |   |   |   | * |   |
     //
     // "B" represents the piece Bishop
+    // "b" represents the moved piece Bishop
     // "*" represents it's possible moves
 
-    //VECTOR_DIAGONALLY_RIGHT_UP
+    //VECTOR_DIAGONALLY_RIGHT_UP Bg7
     //    a   b   c   d   e   f   g   h
     // 8|   |   |   |   |   |   |   | * |
     // 7| * |   |   |   |   |   |>b |   |
@@ -41,7 +42,7 @@ public class Bishop extends Piece{
     // 2|   | * |   |   |   | * |   |   |
     // 1| * |   |   |   |   |   | * |   |
 
-    //VECTOR_DIAGONALLY_LEFT_DOWN
+    //VECTOR_DIAGONALLY_LEFT_DOWN Bb2
     //    a   b   c   d   e   f   g   h
     // 8|   |   |   |   |   |   |   | * |
     // 7| * |   |   |   |   |   | * |   |
@@ -52,10 +53,10 @@ public class Bishop extends Piece{
     // 2|   | b<|   |   |   | * |   |   |
     // 1| * |   |   |   |   |   | * |   |
 
-    private static final int VECTOR_DIAGONALLY_LEFT_UP = -9; //c5 to a7
-    private static final int VECTOR_DIAGONALLY_RIGHT_UP = -7; //e5 to h8
-    private static final int VECTOR_DIAGONALLY_LEFT_DOWN = 7; //c3 to a1
-    private static final int VECTOR_DIAGONALLY_RIGHT_DOWN = 9; //e3 to g1
+    private static final int VECTOR_DIAGONALLY_LEFT_UP = -9; //Bc5 to Ba7
+    private static final int VECTOR_DIAGONALLY_RIGHT_UP = -7; //Be5 to Bh8
+    private static final int VECTOR_DIAGONALLY_LEFT_DOWN = 7; //Bc3 to Ba1
+    private static final int VECTOR_DIAGONALLY_RIGHT_DOWN = 9; //Be3 to Bg1
 
     private final static int[] CANDIDATE_MOVE_VECTOR_COORDINATES = {VECTOR_DIAGONALLY_LEFT_UP, VECTOR_DIAGONALLY_RIGHT_UP,
                                                                     VECTOR_DIAGONALLY_LEFT_DOWN, VECTOR_DIAGONALLY_RIGHT_DOWN};
@@ -92,6 +93,11 @@ public class Bishop extends Piece{
         }
 
         return ImmutableList.copyOf(legalMoves);
+    }
+    @Override
+    public String toString(){
+
+        return PieceType.BISHOP.toString();
     }
 
     private static boolean isFirstColumnExclusion(final int currentPosition, final int candidateOffset){
