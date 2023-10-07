@@ -4,10 +4,7 @@ import com.chess.engine.Alliance;
 import com.chess.engine.pieces.*;
 import com.google.common.collect.ImmutableList;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Board {
     //Chess board 8*8
@@ -131,6 +128,7 @@ public class Board {
         Alliance nextMoveMaker;
 
         public Builder(){
+            this.boardConfig = new HashMap<>();
         }
 
         public Builder setPiece(final Piece piece){
