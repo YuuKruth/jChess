@@ -57,7 +57,7 @@ public class Pawn extends Piece {
     private final static int ATTACK_MOVE_ONE_SIDE = 7; //c5 or e5
     private final static int ATTACK_MOVE_ANOTHER_SIDE = 9; //e5 or c5
     private final static int[] CANDIDATE_MOVE_COORDINATE = {MOVE_UP, MOVE_JUMP,
-                                                            ATTACK_MOVE_ONE_SIDE, ATTACK_MOVE_ANOTHER_SIDE};
+                               ATTACK_MOVE_ONE_SIDE, ATTACK_MOVE_ANOTHER_SIDE};
 
     public Pawn(final Alliance pieceAlliance,
                 final int getPiecePosition) {
@@ -89,10 +89,10 @@ public class Pawn extends Piece {
             }//Attack Move one side
             else if (currentCandidateOffset == ATTACK_MOVE_ONE_SIDE &&
                     !((BoardUtils.EIGHTH_COLUMN[this.piecePosition] && this.pieceAlliance.isWhite() ||
-                     (BoardUtils.FIRST_COLUMN[this.piecePosition] && this.pieceAlliance.isBlack()))) ){
-                if (board.getTile(candidateDestinationCoordinate).isTileOccupied()){
+                            (BoardUtils.FIRST_COLUMN[this.piecePosition] && this.pieceAlliance.isBlack())))) {
+                if (board.getTile(candidateDestinationCoordinate).isTileOccupied()) {
                     final Piece pieceOnCandidate = board.getTile(candidateDestinationCoordinate).getPiece();
-                    if (this.pieceAlliance != pieceOnCandidate.getPieceAlliance()){
+                    if (this.pieceAlliance != pieceOnCandidate.getPieceAlliance()) {
                         //TODO more work here!! deal with promotion
                         legalMoves.add(new MajorMove(board, this, candidateDestinationCoordinate));
                     }
@@ -101,10 +101,10 @@ public class Pawn extends Piece {
             }//Attack Move another side
             else if (currentCandidateOffset == ATTACK_MOVE_ANOTHER_SIDE &&
                     !((BoardUtils.FIRST_COLUMN[this.piecePosition] && this.pieceAlliance.isWhite() ||
-                     (BoardUtils.EIGHTH_COLUMN[this.piecePosition] && this.pieceAlliance.isBlack()))) ){
-                if (board.getTile(candidateDestinationCoordinate).isTileOccupied()){
+                      (BoardUtils.EIGHTH_COLUMN[this.piecePosition] && this.pieceAlliance.isBlack())))) {
+                if (board.getTile(candidateDestinationCoordinate).isTileOccupied()) {
                     final Piece pieceOnCandidate = board.getTile(candidateDestinationCoordinate).getPiece();
-                    if (this.pieceAlliance != pieceOnCandidate.getPieceAlliance()){
+                    if (this.pieceAlliance != pieceOnCandidate.getPieceAlliance()) {
                         //TODO more work here!! deal with promotion
                         legalMoves.add(new MajorMove(board, this, candidateDestinationCoordinate));
                     }
@@ -113,8 +113,9 @@ public class Pawn extends Piece {
         }
         return ImmutableList.copyOf(legalMoves);
     }
+
     @Override
-    public String toString(){
+    public String toString() {
         return PieceType.PAWN.toString();
     }
 }

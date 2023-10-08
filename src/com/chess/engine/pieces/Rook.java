@@ -13,7 +13,7 @@ import java.util.List;
 
 import static com.chess.engine.board.Move.*;
 
-public class Rook extends Piece{
+public class Rook extends Piece {
     //Imagine Rook is on tile d4:
     //
     //Chess board
@@ -57,7 +57,11 @@ public class Rook extends Piece{
     private static final int VECTOR_HORIZONTALLY_LEFT = -1; //Rc4 to Ra4
     private static final int VECTOR_HORIZONTALLY_RIGHT = 1; //Re4 to Rh4
     private static final int VECTOR_VERTICALLY_DOWN = 8; //Rd3 to Rd1
-    private final static int[] CANDIDATE_MOVE_VECTOR_COORDINATES = {VECTOR_VERTICALLY_UP, VECTOR_HORIZONTALLY_LEFT, VECTOR_HORIZONTALLY_RIGHT, VECTOR_VERTICALLY_DOWN};
+    private final static int[] CANDIDATE_MOVE_VECTOR_COORDINATES = {VECTOR_VERTICALLY_UP,
+                                                                    VECTOR_HORIZONTALLY_LEFT,
+                                                                    VECTOR_HORIZONTALLY_RIGHT,
+                                                                    VECTOR_VERTICALLY_DOWN};
+
     public Rook(final Alliance pieceAlliance,
                 final int getPiecePosition) {
         super(PieceType.ROOK, getPiecePosition, pieceAlliance);
@@ -68,20 +72,20 @@ public class Rook extends Piece{
         final List<Move> legalMoves = new ArrayList<>();
         for (final int candidateCoordinateOffset : CANDIDATE_MOVE_VECTOR_COORDINATES) {
             int candidateDestinationCoordinate = this.piecePosition;
-            while (BoardUtils.isValidTileCoordinate(candidateDestinationCoordinate)){
+            while (BoardUtils.isValidTileCoordinate(candidateDestinationCoordinate)) {
                 if (isFirstColumnExclusion(candidateDestinationCoordinate, candidateCoordinateOffset) ||
-                        isEighthColumnExclusion(candidateDestinationCoordinate, candidateCoordinateOffset)){
+                        isEighthColumnExclusion(candidateDestinationCoordinate, candidateCoordinateOffset)) {
                     break;
                 }
                 candidateDestinationCoordinate += candidateCoordinateOffset;
                 if (BoardUtils.isValidTileCoordinate(candidateDestinationCoordinate)) {
                     final Tile candidateDestinationTile = board.getTile(candidateDestinationCoordinate);
-                    if (!candidateDestinationTile.isTileOccupied()){
+                    if (!candidateDestinationTile.isTileOccupied()) {
                         legalMoves.add(new MajorMove(board, this, candidateDestinationCoordinate));
                     } else {
                         final Piece pieceAtDestination = candidateDestinationTile.getPiece();
-                        final Alliance pieceAlliance =pieceAtDestination.getPieceAlliance();
-                        if (this.pieceAlliance != pieceAlliance){
+                        final Alliance pieceAlliance = pieceAtDestination.getPieceAlliance();
+                        if (this.pieceAlliance != pieceAlliance) {
                             legalMoves.add(new AttackMove(board, this, candidateDestinationCoordinate, pieceAtDestination));
                         }
                         break;
@@ -93,16 +97,19 @@ public class Rook extends Piece{
 
         return ImmutableList.copyOf(legalMoves);
     }
+
     @Override
-    public String toString(){
+    public String toString() {
         return PieceType.ROOK.toString();
     }
 
-    private static boolean isFirstColumnExclusion(final int currentPosition, final int candidateOffset){
+    private static boolean isFirstColumnExclusion(final int currentPosition,
+                                                  final int candidateOffset) {
         return BoardUtils.FIRST_COLUMN[currentPosition] && (candidateOffset == VECTOR_HORIZONTALLY_LEFT); //-1
     }
 
-    private static boolean isEighthColumnExclusion(final int currentPosition, final int candidateOffset){
+    private static boolean isEighthColumnExclusion(final int currentPosition,
+                                                   final int candidateOffset) {
         return BoardUtils.EIGHTH_COLUMN[currentPosition] && (candidateOffset == VECTOR_HORIZONTALLY_RIGHT); //1
     }
 }

@@ -13,7 +13,7 @@ import java.util.List;
 
 import static com.chess.engine.board.Move.*;
 
-public class Bishop extends Piece{
+public class Bishop extends Piece {
     //Imagine Bishop is on tile d4:
     //
     //Chess board
@@ -60,6 +60,7 @@ public class Bishop extends Piece{
 
     private final static int[] CANDIDATE_MOVE_VECTOR_COORDINATES = {VECTOR_DIAGONALLY_LEFT_UP, VECTOR_DIAGONALLY_RIGHT_UP,
                                                                     VECTOR_DIAGONALLY_LEFT_DOWN, VECTOR_DIAGONALLY_RIGHT_DOWN};
+
     public Bishop(final Alliance pieceAlliance,
                   final int getPiecePosition) {
         super(PieceType.BISHOP, getPiecePosition, pieceAlliance);
@@ -70,20 +71,20 @@ public class Bishop extends Piece{
         final List<Move> legalMoves = new ArrayList<>();
         for (final int candidateCoordinateOffset : CANDIDATE_MOVE_VECTOR_COORDINATES) {
             int candidateDestinationCoordinate = this.piecePosition;
-            while (BoardUtils.isValidTileCoordinate(candidateDestinationCoordinate)){
+            while (BoardUtils.isValidTileCoordinate(candidateDestinationCoordinate)) {
                 if (isFirstColumnExclusion(candidateDestinationCoordinate, candidateCoordinateOffset) ||
-                        isEighthColumnExclusion(candidateDestinationCoordinate, candidateCoordinateOffset)){
+                        isEighthColumnExclusion(candidateDestinationCoordinate, candidateCoordinateOffset)) {
                     break;
                 }
                 candidateDestinationCoordinate += candidateCoordinateOffset;
                 if (BoardUtils.isValidTileCoordinate(candidateDestinationCoordinate)) {
                     final Tile candidateDestinationTile = board.getTile(candidateDestinationCoordinate);
-                    if (!candidateDestinationTile.isTileOccupied()){
+                    if (!candidateDestinationTile.isTileOccupied()) {
                         legalMoves.add(new MajorMove(board, this, candidateDestinationCoordinate));
                     } else {
                         final Piece pieceAtDestination = candidateDestinationTile.getPiece();
-                        final Alliance pieceAlliance =pieceAtDestination.getPieceAlliance();
-                        if (this.pieceAlliance != pieceAlliance){
+                        final Alliance pieceAlliance = pieceAtDestination.getPieceAlliance();
+                        if (this.pieceAlliance != pieceAlliance) {
                             legalMoves.add(new AttackMove(board, this, candidateDestinationCoordinate, pieceAtDestination));
                         }
                         break;
@@ -95,18 +96,19 @@ public class Bishop extends Piece{
 
         return ImmutableList.copyOf(legalMoves);
     }
+
     @Override
-    public String toString(){
+    public String toString() {
 
         return PieceType.BISHOP.toString();
     }
 
-    private static boolean isFirstColumnExclusion(final int currentPosition, final int candidateOffset){
+    private static boolean isFirstColumnExclusion(final int currentPosition, final int candidateOffset) {
         return BoardUtils.FIRST_COLUMN[currentPosition] && (candidateOffset == VECTOR_DIAGONALLY_LEFT_UP ||
                                                             candidateOffset == VECTOR_DIAGONALLY_LEFT_DOWN);
     } //-9, 7
 
-    private static boolean isEighthColumnExclusion(final int currentPosition, final int candidateOffset){
+    private static boolean isEighthColumnExclusion(final int currentPosition, final int candidateOffset) {
         return BoardUtils.EIGHTH_COLUMN[currentPosition] && (candidateOffset == VECTOR_DIAGONALLY_RIGHT_UP ||
                                                              candidateOffset == VECTOR_DIAGONALLY_RIGHT_DOWN);
     } //-7, 9

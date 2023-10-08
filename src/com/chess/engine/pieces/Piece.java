@@ -15,7 +15,7 @@ public abstract class Piece {
 
     Piece(final PieceType pieceType,
           final int getPiecePosition,
-          final Alliance pieceAlliance){
+          final Alliance pieceAlliance) {
         this.pieceType = pieceType;
         this.piecePosition = getPiecePosition;
         this.pieceAlliance = pieceAlliance;
@@ -27,10 +27,12 @@ public abstract class Piece {
     public PieceType getPieceType() {
         return this.pieceType;
     }
-    public int getPiecePosition(){
-        return  this.piecePosition;
+
+    public int getPiecePosition() {
+        return this.piecePosition;
     }
-    public  Alliance getPieceAlliance(){
+
+    public Alliance getPieceAlliance() {
         return this.pieceAlliance;
     }
 
@@ -40,7 +42,7 @@ public abstract class Piece {
 
     public abstract Collection<Move> calculateLegalMoves(final Board board);
 
-    public enum PieceType{
+    public enum PieceType {
         PAWN("P") {
             @Override
             public boolean isKing() {
@@ -77,14 +79,17 @@ public abstract class Piece {
                 return true;
             }
         };
-        private String pieceName;
-        PieceType(final String pieceName){
+        private final String pieceName;
+
+        PieceType(final String pieceName) {
             this.pieceName = pieceName;
         }
+
         @Override
-        public String toString(){
+        public String toString() {
             return this.pieceName;
         }
+
         public abstract boolean isKing();
     }
 }

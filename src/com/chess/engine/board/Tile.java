@@ -1,4 +1,5 @@
 package com.chess.engine.board;
+
 import com.chess.engine.pieces.Piece;
 import com.google.common.collect.ImmutableMap;
 
@@ -25,8 +26,9 @@ public abstract class Tile {
         //Collections.unmodifiableMap(emptyTileMap);
         return ImmutableMap.copyOf(emptyTileMap);
     }
+
     //creates a tile
-    public static Tile crateTile(final int tileCoordinate, final Piece piece){
+    public static Tile crateTile(final int tileCoordinate, final Piece piece) {
         return piece != null ? new OccupiedTile(tileCoordinate, piece) : EMPTY_TILES_CASHE.get(tileCoordinate);
     }
 
@@ -41,49 +43,54 @@ public abstract class Tile {
     public abstract Piece getPiece();
 
     //empty tile
-    public static final class EmptyTile extends Tile{
+    public static final class EmptyTile extends Tile {
         //ctor
-        private EmptyTile(final int coordinate){
+        private EmptyTile(final int coordinate) {
             super(coordinate);
         }
 
         //methods
         @Override
-        public String toString(){
+        public String toString() {
             return "-";
         }
+
         @Override
-        public boolean isTileOccupied(){
+        public boolean isTileOccupied() {
             return false;
         }
+
         @Override
-        public Piece getPiece(){
+        public Piece getPiece() {
             return null;
         }
 
     }
 
     //occupied tile
-    public static final class OccupiedTile extends Tile{
+    public static final class OccupiedTile extends Tile {
         private final Piece pieceOnTile;
+
         //ctor
-         private OccupiedTile(int tileCoordinate, final Piece pieceOnTile){
+        private OccupiedTile(int tileCoordinate, final Piece pieceOnTile) {
             super(tileCoordinate);
             this.pieceOnTile = pieceOnTile;
         }
 
         //methods
         @Override
-        public String toString(){
+        public String toString() {
             return getPiece().getPieceAlliance().isBlack() ? getPiece().toString().toLowerCase() :
-                    getPiece().toString();
+                   getPiece().toString();
         }
+
         @Override
-        public boolean isTileOccupied(){
+        public boolean isTileOccupied() {
             return true;
         }
+
         @Override
-        public Piece getPiece(){
+        public Piece getPiece() {
             return pieceOnTile;
         }
     }
