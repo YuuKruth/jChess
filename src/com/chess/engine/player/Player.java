@@ -55,7 +55,7 @@ public abstract class Player {
         return this.legalMoves.contains(move);
     }
 
-    private Collection<Move> getLegalMoves() {
+    public Collection<Move> getLegalMoves() {
         return this.legalMoves;
     }
 
